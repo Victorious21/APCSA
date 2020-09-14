@@ -1,0 +1,90 @@
+class Main {
+  public static void main(String[] args) {
+    {
+     Circle myFirstCircle = new Circle(10);
+     
+     System.out.println("My first circle has a radius of " + myFirstCircle.getRadius());
+     System.out.println("My first circle has an area of " + myFirstCircle.getArea());  
+       
+     Circle mySecondCircle = new Circle(3);
+     
+     System.out.println("My second circle has a radius of " + mySecondCircle.getRadius());
+     System.out.println("My second circle has an area of " + mySecondCircle.getArea()); 
+     
+     Circle myThirdCircle = new Circle();
+     
+     System.out.println("My third circle has a radius of " + myThirdCircle.getRadius());
+     System.out.println("My third circle has an area of " + myThirdCircle.getArea()); 
+     
+     Circle myFourthCircle = new Circle(5, "Red");
+     
+     System.out.println("Your fourth cirlce is of size: " + myFourthCircle.getArea() +
+                              " of color " + myFourthCircle.getColor());
+             
+     myFourthCircle.setRadius(50);
+     myFourthCircle.setColor("Orange");
+        
+     
+     System.out.println("Your fourth updated cirlce is of size: " + myFourthCircle.getArea() +
+                              " of color " + myFourthCircle.getColor())
+             
+             ;
+    }
+    
+  }
+}
+
+-----------------------------------------------------------------------------------------------------------
+public class Circle 
+{
+    //attributes
+    private double radius;
+    private final double pi = 3.14;
+    private String color;
+    
+    //constructor
+    public Circle(double r)
+    {
+        radius = r;
+        color = "black";
+    }
+    
+     public Circle(double r, String c)
+    {
+        radius = r;
+        color = c;
+    }
+     
+    public Circle()
+    {
+        radius = 0;
+        color = "black";
+    }
+    
+    //methods
+    public double getRadius()
+    {
+        return radius;
+    }
+    
+    public double getArea()
+    {
+        return pi*radius*radius;
+    }
+    
+    public String getColor()
+    {
+        return color;
+    }
+    
+    //setter method or mutator method
+    public void setRadius(double r)
+    {
+        radius = r;
+    }
+    
+    public void setColor(String c)
+    {
+        color = c;
+    }
+}
