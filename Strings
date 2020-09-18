@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) 
+  {
+    String name1 = "Stefano";
+    String name2 = "Erick";
+    String name3 = "Stefano";
+
+    Scanner input = new Scanner(System.in);
+    System.out.println("Type a name: ");
+    String name4 = input.nextLine();
+
+    String name5 = new String("Stefano");
+
+    System.out.println("Are the names: " + name1 + " and " + name4 + " equal: ");
+    System.out.println(name1.equals(name4));
+
+    System.out.println("Wrong way to compare Strings: ");
+    System.out.println(name1 == name3);
+
+
+    String text1 = "Harold told Gabriel: \"Shutup!!!\"";
+    System.out.println(text1);
+    //special characters^^
+
+    int index = text1.indexOf("told");
+    String text2 = text1.substring(index);
+    System.out.println("My substringed text: \n" + text2);
+
+    System.out.println("Half of this text is: ");
+    int indexHalf = text1.length()/2;
+    System.out.println(text2.substring(indexHalf));
+
+    String rep = "Trump";
+    String dem = "Biden";
+
+    System.out.println("Democratic candidate mentioned: ");
+    System.out.println(text1.indexOf(dem));
+// -1 = String not located within text
+    System.out.println("Republican candidate mentioned: ");
+    System.out.println(text1.indexOf(rep));
+
+    String allNames = "";
+    allNames += name1;
+    allNames += name2;
+
+    allNames = allNames + name3;
+    allNames = allNames + "\t" + name4 + "\t" + true;
+    System.out.println(allNames);
+  }
+}
