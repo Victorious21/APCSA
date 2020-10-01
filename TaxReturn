@@ -1,0 +1,123 @@
+import javax.swing.JOptionPane;
+
+class Main
+{
+
+
+  public static void main(String[] args)
+  {
+    String input1 = JOptionPane.showInputDialog("Please enter your income");
+    String input2 = JOptionPane.showInputDialog("Please enter single or married");
+
+    int income = Integer.parseInt(input1);
+    boolean married = Boolean.parseBoolean(input2);
+
+    TaxReturn client = new TaxReturn(income, married);
+
+      System.out.println("You owe: " + client.getTax());
+
+    System.out.println("Testing inputs and JOPTIONPANE Class: " + input1 + input2);
+  }
+} 
+
+
+----------------------------------------------------------------------------------------
+
+public class TaxReturn
+{
+  double income;
+  boolean status;
+  //tax rates
+  private static final double RATE1 = 0.15;
+  private static final double RATE2 = 0.25;
+  private static final double RATE3 = 0.31;
+  private static final double RATE4 = 0.37;
+
+  private static final double SINGLE_BRACKET1 = 21000;
+  private static final double SINGLE_BRACKET2 = 51500;
+  private static final double SINGLE_BRACKET3 = 82000;
+
+  private static final double MARRIED_BRACKET1 = 31500;
+  private static final double MARRIED_BRACKET2 = 71500;
+  private static final double MARRIED_BRACKET3 = 99500;
+
+/*
+ * Creates taxreturn object
+ * @param anIncome taxpayer's income
+ * @param status either Single or Married
+*/
+  public TaxReturn(double anIncome, boolean Status)
+  {
+    income = anIncome;
+    status = Status;
+  }
+
+  public double getTaxMarried()
+  {
+    double tax = 0;
+
+    if(status)
+    {
+      if(income <= MARRIED_BRACKET1)
+      {
+        tax = income*RATE1;
+      }
+
+      else if(income <= MARRIED_BRACKET2)
+      {
+        tax = RATE1*MARRIED_BRACKET1 + RATE2 * (income - MARRIED_BRACKET1);
+      }
+
+      else if(income <= MARRIED_BRACKET3)
+      {
+        tax = RATE1*MARRIED_BRACKET1 + RATE2 * (MARRIED_BRACKET2 - MARRIED_BRACKET1) + RATE3*(MARRIED_BRACKET3 - MARRIED_BRACKET2);
+      }
+
+      else
+      {
+        tax = RATE1*MARRIED_BRACKET1 + RATE2 * (MARRIED_BRACKET2 - MARRIED_BRACKET1) + RATE3*(MARRIED_BRACKET3 - MARRIED_BRACKET2) + RATE4*(income - MARRIED_BRACKET3);
+      }
+
+    }
+    else
+    {
+      
+    }
+    return tax;
+  }
+
+  public double getTaxSingle()
+  {
+    double tax = 0;
+
+    if(status)
+    {
+      if(income <= SINGLE_BRACKET1)
+      {
+        tax = income*RATE1;
+      }
+
+      else if(income <= SINGLE_BRACKET2)
+      {
+        tax = RATE1*SINGLE_BRACKET1 + RATE2 * (income - SINGLE_BRACKET1);
+      }
+
+      else if(income <= SINGLE_BRACKET3)
+      {
+        tax = RATE1*SINGLE_BRACKET1 + RATE2 * (SINGLE_BRACKET2 - SINGLE_BRACKET1) + RATE3*(SINGLE_BRACKET3 - SINGLE_BRACKET2);
+      }
+
+      else
+      {
+        tax = RATE1*SINGLE_BRACKET1 + RATE2 * (SINGLE_BRACKET2 - SINGLE_BRACKET1) + RATE3*(SINGLE_BRACKET3 - SINGLE_BRACKET2) + RATE4*(income - SINGLE_BRACKET3);
+      }
+
+    }
+    else
+    {
+      
+    }
+    return tax;
+  }
+
+}
